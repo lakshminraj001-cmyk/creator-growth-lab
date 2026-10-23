@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creator Growth Lab: helping creators find their next step toward $100</title>
+<meta name="description" content="A self-initiated Product & Growth Operations project: a lightweight experimentation framework for helping early-stage creators find their next step toward their first $100.">
+<meta property="og:title" content="Creator Growth Lab">
+<meta property="og:description" content="Helping creators find their next step toward $100. An independent prototype built around Buy Me a Coffee.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AA%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf8f4;--card:#fff;--ink:#1f1a14;--mute:#6b6257;--line:#e6e0d6;--acc:#b8541a;--accbg:#fbeee3;--ok:#1d7a4a;--okbg:#e2f4ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17140f;--card:#211d17;--ink:#f1ebe2;--mute:#a79d8f;--line:#3a342b;--acc:#f0985a;--accbg:#33261a;--ok:#5fcf93;--okbg:#17291f}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 40px}
+.tag{display:inline-block;background:var(--accbg);color:var(--acc);font-weight:600;font-size:13px;border-radius:99px;padding:4px 12px;margin-bottom:18px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+h1{font-size:clamp(38px,8vw,60px);letter-spacing:-.02em}
+.lead{font-size:20px;color:var(--mute);margin:14px 0 6px}
+.small{font-size:14px;color:var(--mute)}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;margin-bottom:16px}
+p{margin:0 0 14px}
+.pull{font-family:Georgia,serif;font-size:23px;line-height:1.4;border-left:4px solid var(--acc);padding:2px 0 2px 18px;margin:20px 0}
+.note{background:var(--accbg);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink)}
+.stages{display:grid;gap:10px;margin:20px 0}
+.stage{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.stage b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--bg);display:grid;place-items:center;font-size:14px}
+.stage div{flex:1}.stage strong{display:block}.stage span{color:var(--mute);font-size:15px}
+.loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:600;margin:16px 0}
+.loop span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
+.loop i{color:var(--acc);font-style:normal}
+.decide{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 20px}
+.decide span{border-radius:99px;padding:3px 14px;font-weight:600;font-size:14px;border:1px solid currentColor}
+.decide .c{color:var(--ok)}.decide .i{color:#a06a00}.decide .s{color:#b3261e}
+@media (prefers-color-scheme:dark){.decide .i{color:#e8b54a}.decide .s{color:#ff8a80}}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card strong{display:block;margin-bottom:2px}.card span{color:var(--mute);font-size:16px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+@media (max-width:520px){.compare{grid-template-columns:1fr}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat.win{background:var(--okbg);border-color:var(--ok)}
+.stat small{display:block;color:var(--mute);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.stat b{display:block;font:700 34px/1.2 Georgia,serif}.stat span{font-size:15px;color:var(--mute)}
+ol.next{padding-left:0;list-style:none;display:grid;gap:12px;counter-reset:n;margin:16px 0}
+ol.next li{counter-increment:n;display:flex;gap:14px}
+ol.next li::before{content:counter(n);flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--acc);color:var(--acc);display:grid;place-items:center;font-weight:700;font-size:14px}
+.final{font-family:Georgia,serif;font-size:24px;line-height:1.4;margin:24px 0 8px}
+footer{padding:32px 0 56px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="tag">Product &amp; Growth Operations project</span>
+  <h1>Creator Growth Lab</h1>
+  <p class="lead">Helping creators find their next step toward $100</p>
+  <p class="small">A self-initiated project built around Buy Me a Coffee.</p>
+</header>
+
+<section>
+  <h2>The idea</h2>
+  <p>Creators already have tools to earn through Buy Me a Coffee: support, memberships, Shop and posts. But having more options doesn&rsquo;t always make growth easier.</p>
+  <p class="pull">The problem isn&rsquo;t always knowing what is possible. It&rsquo;s knowing what to do next.</p>
+  <p>I wanted to explore a simple way to help early-stage creators identify their biggest obstacle, test a solution and learn from the result.</p>
+  <p class="note">This is an independent hypothesis and prototype, not a representation of Buy Me a Coffee&rsquo;s internal data or roadmap.</p>
+</section>
+
+<section>
+  <h2>The journey</h2>
+  <p>Every creator is at a different stage. The next step should reflect where they are.</p>
+  <div class="stages">
+    <div class="stage"><b>1</b><div><strong>Setup</strong><span>Make the page ready</span></div></div>
+    <div class="stage"><b>2</b><div><strong>First traffic</strong><span>Find the right audience</span></div></div>
+    <div class="stage"><b>3</b><div><strong>First supporter</strong><span>Improve the support message</span></div></div>
+    <div class="stage"><b>4</b><div><strong>First $10</strong><span>Repeat what works</span></div></div>
+    <div class="stage"><b>5</b><div><strong>First $100</strong><span>Explore consistent support</span></div></div>
+    <div class="stage"><b>6</b><div><strong>Recurring revenue</strong><span>Give supporters reasons to return</span></div></div>
+  </div>
+  <p>The goal isn&rsquo;t to give everyone the same advice. It&rsquo;s to help each creator find their next best action.</p>
+</section>
+
+<section>
+  <h2>From guessing to testing</h2>
+  <p>I designed a simple experiment loop:</p>
+  <div class="loop"><span>Goal</span><i>&rarr;</i><span>Hypothesis</span><i>&rarr;</i><span>Test</span><i>&rarr;</i><span>Measure</span><i>&rarr;</i><span>Learn</span></div>
+  <p>Every experiment ends with one decision:</p>
+  <div class="decide"><span class="c">Continue</span><span class="i">Iterate</span><span class="s">Stop</span></div>
+  <p>I would start with three experiments:</p>
+  <div class="cards">
+    <div class="card"><strong>Improve the ask</strong><span>Test a clearer support message for creators who have visitors but few supporters.</span></div>
+    <div class="card"><strong>Test membership</strong><span>Try one simple membership offer for creators with repeat supporters.</span></div>
+    <div class="card"><strong>Connect content to action</strong><span>Track which posts and calls to action generate support.</span></div>
+  </div>
+  <p style="margin-top:16px">I&rsquo;d start with the first because it&rsquo;s simple to run and has a clear success metric.</p>
+</section>
+
+<section>
+  <h2>A small example</h2>
+  <p>Imagine Alex gets 500 page visitors a month, but only five become supporters. That&rsquo;s a 1% conversion rate.</p>
+  <p>Instead of chasing more traffic, Alex tests a clearer support message.</p>
+  <div class="compare">
+    <div class="stat"><small>Before</small><b>1.0%</b><span>5 supporters from 500 visitors</span></div>
+    <div class="stat win"><small>If the test works</small><b>1.6%</b><span>8 supporters from the same 500</span></div>
+  </div>
+  <p>That&rsquo;s a promising signal to investigate, not proof of causation. If nothing changes, Alex tests another approach.</p>
+  <p class="small"><em>Alex and all figures are illustrative.</em></p>
+</section>
+
+<section>
+  <h2>What I&rsquo;d do next</h2>
+  <ol class="next">
+    <li><div><strong>Validate.</strong> Talk to creators to understand where they get stuck.</div></li>
+    <li><div><strong>Experiment.</strong> Test the support message and measure conversion.</div></li>
+    <li><div><strong>Learn.</strong> Record what worked, what didn&rsquo;t and why.</div></li>
+    <li><div><strong>Expand.</strong> Explore memberships and content experiments if the evidence supports them.</div></li>
+  </ol>
+  <p>A lightweight tracker would capture each creator&rsquo;s goal, experiment, baseline, result and next decision.</p>
+</section>
+
+<section>
+  <h2>Why this project</h2>
+  <p>This project brings together audience growth, product thinking, experimentation and operations.</p>
+  <p>It demonstrates how I&rsquo;d turn an unclear growth problem into a practical process: understand the obstacle, test a small change, measure the outcome and decide what to do next.</p>
+  <p class="final">The principle is simple: less guessing, smaller experiments and clearer next steps.</p>
+</section>
+
+<footer>
+  <em>An independent prototype to be refined through creator feedback and real-world evidence.</em>
+</footer>
+
+</div>
+</body>
+</html>
